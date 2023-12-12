@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница с книгами</title>
+    <style>
+        /* Добавьте стили CSS для отображения пользователей вертикально */
+        .user-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            display: block; /* Установите display на block */
+            clear: both; /* Добавьте clear: both, чтобы предотвратить обтекание другими элементами */
+        }
+
+
+        .user-card > div {
+            display: block; /* Этот стиль превращает div в блочный элемент */
+        }
+    </style>
+</head>
+<body>
+
+<h1>Книги</h1>
+
+<!-- Отображение информации о пользователях -->
+<div th:each="book : ${books}" class="user-card">
+    <div>
+        <a th:href="@{/books/{id}(id=${book.getId()})}">
+            <span th:text="${book.getTitle()}">User</span>
+        </a>
+    </div>
+</div>
+
+<!-- Форма для оставления комментариев -->
+<div class="comment-box">
+    <h2>Добавить книгу</h2>
+    <a href="/books/new">Create new person</a>
+</div>
+
+</body>
+</html>
