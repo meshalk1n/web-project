@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Приветствую!!!</title>
+
+    <!-- Подключение CSS -->
+    <link th:href="@{/css/action.css}" rel="stylesheet">
+
+</head>
+<body>
+<div class="sidebar">
+    <form th:action="@{/auth/login}" th:method="GET">
+        <button type="submit">Вход</button>
+    </form>
+    <form th:action="@{/auth/registration}" th:method="GET">
+        <button type="submit">Регистрация</button>
+    </form>
+</div>
+</body>
+</html>
