@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Профиль</title>
+
+</head>
+<body>
+<div class="sidebar">
+  <!-- Ваши кнопки навигации -->
+</div>
+<div class="content">
+  <h2>Профиль пользователя</h2>
+  <form>
+    <label for="username">Имя пользователя:</label><br>
+    <input type="text" id="username" name="username" th:value="${person.username}" readonly><br>
+    <label for="age">Год рождения:</label><br>
+    <input type="text" id="age" name="age" th:value="${person.age}" readonly><br>
+    <label for="age">Роль:</label><br>
+    <input type="text" id="role" name="role" th:value="${person.role}" readonly><br>
+  </form>
+</div>
+</body>
+</html>

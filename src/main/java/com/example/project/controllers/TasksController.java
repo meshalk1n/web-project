@@ -1,5 +1,4 @@
 package com.example.project.controllers;
-/*
 
 import com.example.project.models.Book;
 import com.example.project.models.Person;
@@ -15,38 +14,39 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/books")
-public class BookController {
+@RequestMapping("/tasks")
+public class TasksController {
 
     private final BookService bookServices;
 
     private final PersonService personServices;
 
     @Autowired
-    public BookController(BookService bookServices, PersonService personServices) {
+    public TasksController(BookService bookServices, PersonService personServices) {
         this.bookServices = bookServices;
         this.personServices = personServices;
     }
 
+
     @GetMapping()
     public String showAllBooks(Model model) {
         model.addAttribute("books", bookServices.findAll());
-        return "books/show";
+        return "tasks/tasks";
     }
 
     @GetMapping("/new")
     public String showFormForNewBook(@ModelAttribute("book") Book book) {
-        return "books/new";
+        return "tasks/new";
     }
 
     @PostMapping()
     public String processSaveNewBook(@ModelAttribute("book") @Valid Book book,
                                      BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
-            return "books/new";
+            return "tasks/new";
         }
         bookServices.save(book);
-        return "redirect:/books/";
+        return "redirect:tasks/";
     }
 
     @GetMapping("/{id}")
@@ -59,43 +59,41 @@ public class BookController {
         }else{
             model.addAttribute("people", personServices.findAll());
         }
-        return "books/id";
+        return "tasks/id";
     }
 
     @GetMapping("/{id}/edit")
     public String showFormEdit(Model model, @PathVariable("id") int id) {
         model.addAttribute("book", bookServices.findOne(id));
-        return "books/edit";
+        return "tasks/edit";
     }
 
     @PatchMapping("/{id}")
     public String processEditForm(@PathVariable("id") int id, @ModelAttribute("person") @Valid Book book,
                                   BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
-            return "books/edit";
+            return "tasks/edit";
         }
         bookServices.update(id, book);
-        return "redirect:/books/";
+        return "redirect:/tasks/";
     }
 
     @DeleteMapping("/{id}")
     public String processDeleteBook(@PathVariable("id") int id) {
         bookServices.delete(id);
-        return "redirect:/books/";
+        return "redirect:/tasks/";
     }
 
     @PatchMapping("/{id}/release")
     public String release(@PathVariable("id") int id){
         bookServices.release(id);
-        return "redirect:/books/" + id;
+        return "redirect:/tasks/" + id;
     }
 
     @PatchMapping("/{id}/assign")
     public String assign(@PathVariable("id") int id,
                          @ModelAttribute("person") Person selectedPerson) {
         bookServices.assign(id, selectedPerson);
-        return "redirect:/books/" + id;
+        return "redirect:/tasks/" + id;
     }
 }
-
- */

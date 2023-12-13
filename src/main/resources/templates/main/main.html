@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ваше веб-приложение</title>
+
+    <!-- Подключение CSS -->
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<div class="sidebar">
+    <form th:action="@{/main/profile/}" th:method="GET">
+        <button type="submit">Страница профиля</button>
+    </form>
+    <form th:action="@{/tasks/}" th:method="GET">
+        <button type="submit">Страница задач</button>
+    </form>
+    <form th:action="@{/main/teams/}" th:method="GET">
+        <button type="submit">Пользователи</button>
+    </form>
+    <form th:action="@{/logout}" th:method="GET">
+        <button class="logout" type="submit">выйти</button>
+    </form>
+</div>
+<div class="content">
+    <!-- Здесь будет содержимое страницы -->
+</div>
+</body>
+</html>
