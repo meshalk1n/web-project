@@ -2,20 +2,20 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>update book</title>
+    <title>Изменение</title>
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{/tasks/{id}(id=${book.getId()})}" th:object="${book}">
-    <label for="title">Введите название книги: </label>
+<form th:method="PATCH" th:action="@{/tasks/{id}(id=${task.getId()})}" th:object="${task}">
+    <label for="title">Введите название задачи: </label>
     <input type="text" th:field="*{title}" id="title"/>
     <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">error</div>
     <br/>
-    <label for="author">Введите автора книги: </label>
+    <label for="author">Введите описание задачи: </label>
     <input type="text" th:field="*{author}" id="author"/>
     <div style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">error</div>
     <br/>
-    <label for="year">Введите год книги: </label>
+    <label for="year">Введите сроки задачи: </label>
     <input type="text" th:field="*{year}" id="year"/>
     <div style="color: red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">error</div>
     <br/>

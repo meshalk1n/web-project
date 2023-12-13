@@ -2,7 +2,7 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Страница с книгами</title>
+    <title>Страница с задачами</title>
     <style>
         /* Добавьте стили CSS для отображения пользователей вертикально */
         .user-card {
@@ -21,21 +21,21 @@
 </head>
 <body>
 
-<h1>Книги</h1>
+<h1>Задачи</h1>
 
 <!-- Отображение информации о пользователях -->
-<div th:each="book : ${books}" class="user-card">
+<div th:each="task : ${tasks}" class="user-card">
     <div>
-        <a th:href="@{/tasks/{id}(id=${book.getId()})}">
-            <span th:text="${book.getTitle()}">User</span>
+        <a th:href="@{/tasks/{id}(id=${task.getId()})}">
+            <span th:text="${task.getTitle()}">User</span>
         </a>
     </div>
 </div>
 
 <!-- Форма для оставления комментариев -->
 <div class="comment-box">
-    <h2>Добавить книгу</h2>
-    <a href="/tasks/new">Create new person</a>
+    <h2>Добавить задачу</h2>
+    <a href="/tasks/new">Создать задачу</a>
 </div>
 
 </body>

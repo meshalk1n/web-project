@@ -1,8 +1,8 @@
 package com.example.project.services;
 
-import com.example.project.models.Book;
+import com.example.project.models.Tasks;
 import com.example.project.models.Person;
-import com.example.project.repositories.BookRepository;
+import com.example.project.repositories.TasksRepository;
 import com.example.project.repositories.PersonRepository;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,14 @@ public class PersonService {
 
     private final PersonRepository personRepository;
 
-    private final BookRepository bookRepository;
+    private final TasksRepository tasksRepository;
 
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public PersonService(PersonRepository personRepository, BookRepository bookRepository, PasswordEncoder passwordEncoder) {
+    public PersonService(PersonRepository personRepository, TasksRepository tasksRepository, PasswordEncoder passwordEncoder) {
         this.personRepository = personRepository;
-        this.bookRepository = bookRepository;
+        this.tasksRepository = tasksRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -59,7 +59,7 @@ public class PersonService {
     }
 
     //показывает, сколько взял книг человек
-    public List<Book> getBooksByPersonId(int id){
+    public List<Tasks> getBooksByPersonId(int id){
         Optional<Person> person = personRepository.findById(id);
 
         if(person.isPresent()){

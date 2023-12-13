@@ -6,8 +6,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "Book")
-public class Book {
+@Table(name = "Tasks")
+public class Tasks {
 
     @Id
     @Column(name = "id")
@@ -31,9 +31,9 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person owner;
-    public Book(){}
+    public Tasks(){}
 
-    public Book(String title, String author, int year) {
+    public Tasks(String title, String author, int year) {
         this.title = title;
         this.author = author;
         this.year = year;
@@ -81,7 +81,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "Tasks{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +

@@ -5,16 +5,16 @@
   <title>id</title>
 </head>
 <body>
-<div th:if="${books.isEmpty()}">
-  <p>Человек пока не взял ни одной книги </p>
+<div th:if="${tasks.isEmpty()}">
+  <p>Человек пока не взял ни одной задачи </p>
   <hr/>
 </div>
 
-<div th:if="${!books.isEmpty()}">
+<div th:if="${!tasks.isEmpty()}">
   <hr/>
-  <b>Книги:</b>
-  <table th:each="book : ${books}">
-    <tr th:text="${book.getTitle() + ' ,' + book.getAuthor() + ' ,' + book.getYear()}">book</tr>
+  <b>Задачи:</b>
+  <table th:each="tasks : ${tasks}">
+    <tr th:text="${tasks.getTitle() + ' ,' + tasks.getAuthor() + ' ,' + tasks.getYear()}">tasks</tr>
   </table>
   <hr/>
 </div>

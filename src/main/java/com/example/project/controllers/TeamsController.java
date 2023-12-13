@@ -1,7 +1,7 @@
 package com.example.project.controllers;
 
 import com.example.project.models.Person;
-import com.example.project.services.BookService;
+import com.example.project.services.TasksService;
 import com.example.project.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +18,12 @@ public class TeamsController {
 
     private final PersonService personServices;
 
-    private final BookService bookServices;
+    private final TasksService tasksServices;
 
     @Autowired
-    public TeamsController(PersonService personServices, BookService bookServices) {
+    public TeamsController(PersonService personServices, TasksService tasksServices) {
         this.personServices = personServices;
-        this.bookServices = bookServices;
+        this.tasksServices = tasksServices;
     }
 
     @GetMapping()
@@ -50,7 +50,7 @@ public class TeamsController {
     @GetMapping("/{id}")
     public String processFetchPersonById(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personServices.findOne(id));
-        model.addAttribute("books", personServices.getBooksByPersonId(id));
+        model.addAttribute("tasks", personServices.getBooksByPersonId(id));
         return "teams/id";
     }
 

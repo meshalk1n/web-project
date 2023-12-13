@@ -31,7 +31,7 @@ public class Person {
     private String role;
 
     @OneToMany(mappedBy = "owner")
-    private List<Book> books;
+    private List<Tasks> tasks;
 
     public Person(){}
 
@@ -81,11 +81,11 @@ public class Person {
         this.age = age;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public List<Tasks> getBooks() {
+        return tasks;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setBooks(List<Tasks> tasks) {
+        this.tasks = tasks;
     }
 }
