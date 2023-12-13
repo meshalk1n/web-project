@@ -17,21 +17,44 @@ public class Person {
 
     @NotEmpty(message = "это поле не должно быть пустым")
     @Size(min = 2, max = 30, message = "это поле должно иметь минимум 2 и максимум 30 символов")
-    @Column(name = "name")
-    private String name;
+    @Column(name = "username")
+    private String username;
 
     @Min(value = 1, message = "это поле должно быть больше 0")
     @Column(name = "age")
     private int age;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "role")
+    private String role;
 
     @OneToMany(mappedBy = "owner")
     private List<Book> books;
 
     public Person(){}
 
-    public Person(String name, int age) {
-        this.name = name;
+    public Person(String username, int age, String password) {
+        this.username = username;
         this.age = age;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getId() {
@@ -42,12 +65,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public int getAge() {
