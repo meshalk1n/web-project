@@ -29,10 +29,10 @@
 <p th:text="${person.getAge()}">VALUE</p>
 <br/>
 <br/>
-<a th:href="@{/people/{id}/edit(id=${person.getId()})}"><button>Изменить</button></a>
+<a th:href="@{/teams/{id}/edit(id=${person.getId()})}"><button>Изменить</button></a>
 <br/>
 <br/>
-<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+<form th:method="DELETE" th:action="@{/teams/{id}(id=${person.getId()})}">
   <input type="submit" value="Удалить"/>
 </form>
 </body>
