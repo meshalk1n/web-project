@@ -6,6 +6,7 @@ import com.example.project.repositories.BookRepository;
 import com.example.project.repositories.PersonRepository;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,10 +22,13 @@ public class PersonService {
 
     private final BookRepository bookRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    public PersonService(PersonRepository personRepository, BookRepository bookRepository) {
+    public PersonService(PersonRepository personRepository, BookRepository bookRepository, PasswordEncoder passwordEncoder) {
         this.personRepository = personRepository;
         this.bookRepository = bookRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Person> findAll(){
@@ -39,6 +43,8 @@ public class PersonService {
     @Transactional
     public void save(Person person){
         personRepository.save(person);
+        person.setPassword(passwordEncoder.encode(person.getPassword())); // шифрование пароля
+        person.setRole("ROLE_USER"); // роль для пользователей
     }
 
     @Transactional
