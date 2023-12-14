@@ -3,22 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <title>update news</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    input[type="submit"], button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      color: #fff;
+      background-color: #333;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .error {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-
-<form th:method="PATCH" th:action="@{/tidings/{id}(id=${tiding.getId()})}" th:object="${tiding}">
-  <label for="name">Enter name: </label>
-  <input type="text" th:field="*{name}" id="name"/>
-  <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
-  <br/>
-  <label for="core">Enter core: </label>
-  <input type="text" th:field="*{core}" id="core"/>
-  <div style="color:red" th:if="${#fields.hasErrors('core')}" th:errors="*{core}">Core Error</div>
-  <br/>
-  <input type="submit" value="Update!"/>
-</form>
-<form th:action="@{/main/}" th:method="GET">
-  <button type="submit">Назад</button>
-</form>
+<div class="container">
+  <form th:method="PATCH" th:action="@{/tidings/{id}(id=${tiding.getId()})}" th:object="${tiding}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+    <label for="core">Enter core: </label>
+    <input type="text" th:field="*{core}" id="core"/>
+    <div class="error" th:if="${#fields.hasErrors('core')}" th:errors="*{core}">Core Error</div>
+    <input type="submit" value="Update!"/>
+  </form>
+  <form th:action="@{/main/}" th:method="GET">
+    <button type="submit">Назад</button>
+  </form>
+</div>
 </body>
 </html>

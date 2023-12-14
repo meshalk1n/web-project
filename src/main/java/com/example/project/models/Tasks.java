@@ -16,12 +16,10 @@ public class Tasks {
     private int id;
 
     @NotEmpty(message = "это поле не должно быть пустым")
-    @Size(min = 1, max = 30, message = "это поле должно иметь минимум 1 и максимум 30 символов")
     @Column(name = "title")
     private String title;
 
     @NotEmpty(message = "это поле не должно быть пустым")
-    @Size(min = 2, max = 30, message = "это поле должно иметь минимум 2 и максимум 30 символов")
     @Column(name = "description")
     private String description;
 

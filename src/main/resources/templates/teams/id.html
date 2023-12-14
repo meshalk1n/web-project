@@ -31,7 +31,6 @@
 <br/>
 <a th:href="@{/teams/{id}/edit(id=${person.getId()})}"><button>Изменить</button></a>
 <br/>
-<br/>
 <form th:method="DELETE" th:action="@{/teams/{id}(id=${person.getId()})}">
   <input type="submit" value="Удалить"/>
 </form>

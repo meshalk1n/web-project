@@ -16,7 +16,6 @@ public class Person {
     private int id;
 
     @NotEmpty(message = "это поле не должно быть пустым")
-    @Size(min = 2, max = 30, message = "это поле должно иметь минимум 2 и максимум 30 символов")
     @Column(name = "username")
     private String username;
 

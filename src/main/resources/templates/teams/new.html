@@ -3,27 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <title>new person</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    input[type="submit"], button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      color: #fff;
+      background-color: #333;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .error {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-
-<form th:method="POST" th:action="@{/teams/}" th:object="${person}">
-  <label for="username">Enter name: </label>
-  <input type="text" th:field="*{username}" id="username"/>
-  <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>
-  <br/>
-  <label for="age">Enter age: </label>
-  <input type="text" th:field="*{age}" id="age"/>
-  <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
-  <br/>
-  <label for="age">Enter password: </label>
-  <input type="text" th:field="*{password}" id="password"/>
-  <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
-  <br/>
-  <input type="submit" value="Create!"/>
-</form>
-<form th:action="@{/teams/}" th:method="GET">
-  <button type="submit">Назад</button>
-</form>
-
+<div class="container">
+  <form th:method="POST" th:action="@{/teams/}" th:object="${person}">
+    <label for="username">Enter name: </label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <div class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>
+    <label for="age">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div class="error" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
+    <label for="password">Enter password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+    <input type="submit" value="Create!"/>
+  </form>
+  <form th:action="@{/teams/}" th:method="GET">
+    <button type="submit">Назад</button>
+  </form>
+</div>
 </body>
 </html>

@@ -3,26 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Создание задач</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"], button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            color: #fff;
+            background-color: #333;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-
-<form th:method="POST" th:action="@{/tasks}" th:object="${task}" th:accept-charset="UTF-8">
-    <label for="title">Введите название задачи: </label>
-    <input type="text" th:field="*{title}" id="title"/>
-    <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">error</div>
-    <br/>
-    <label for="description">Введите описание задачи: </label>
-    <input type="text" th:field="*{description}" id="description"/>
-    <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">error</div>
-    <br/>
-    <label for="data">Введите сроки задачи: </label>
-    <input type="text" th:field="*{data}" id="data"/>
-    <div style="color: red" th:if="${#fields.hasErrors('data')}" th:errors="*{data}">error</div>
-    <br/>
-    <input type="submit" value="Добавить"/>
-</form>
-<form th:action="@{/tasks/}" th:method="GET">
-    <button type="submit">Назад</button>
-</form>
+<div class="container">
+    <form th:method="POST" th:action="@{/tasks}" th:object="${task}" th:accept-charset="UTF-8">
+        <label for="title">Введите название задачи: </label>
+        <input type="text" th:field="*{title}" id="title"/>
+        <div class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">error</div>
+        <label for="description">Введите описание задачи: </label>
+        <input type="text" th:field="*{description}" id="description"/>
+        <div class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">error</div>
+        <label for="data">Введите сроки задачи: </label>
+        <input type="text" th:field="*{data}" id="data"/>
+        <div class="error" th:if="${#fields.hasErrors('data')}" th:errors="*{data}">error</div>
+        <input type="submit" value="Добавить"/>
+    </form>
+    <form th:action="@{/tasks/}" th:method="GET">
+        <button type="submit">Назад</button>
+    </form>
+</div>
 </body>
 </html>

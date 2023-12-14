@@ -3,51 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>id</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"], button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            color: #fff;
+            background-color: #333;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<h4> id: </h4>
-<p th:text="${task.getId()}">VALUE</p>
-<br/>
-<br/>
-<h4> название задачи: </h4>
-<p th:text="${task.getTitle()}">VALUE</p>
-<br/>
-<h4> описание задачи: </h4>
-<p th:text="${task.getDescription()}">VALUE</p>
-<br/>
-<h4> сроки задачи: </h4>
-<p th:text="${task.getData()}">VALUE </p>
-<br/>
-<div th:if="${owner}">
-    <span>Задача сейчас у: </span> <span th:text="${owner.getUsername()}">Person Name</span>
-    <form th:method="PATCH" th:action="@{/tasks/{id}/release(id=${task.getId()})}">
-        <input type="submit" value="Освободить задачу">
+<div class="container">
+    <h4> id: </h4>
+    <p th:text="${task.getId()}">VALUE</p>
+    <br/>
+    <br/>
+    <h4> название задачи: </h4>
+    <p th:text="${task.getTitle()}">VALUE</p>
+    <br/>
+    <h4> описание задачи: </h4>
+    <p th:text="${task.getDescription()}">VALUE</p>
+    <br/>
+    <h4> сроки задачи: </h4>
+    <p th:text="${task.getData()}">VALUE </p>
+    <br/>
+    <div th:if="${owner}">
+        <span>Задача сейчас у: </span> <span th:text="${owner.getUsername()}">Person Name</span>
+        <form th:method="PATCH" th:action="@{/tasks/{id}/release(id=${task.getId()})}">
+            <input type="submit" value="Освободить задачу">
+        </form>
+    </div>
+    <div th:if="${people}">
+        <span>Эта задача свободна. Кому назначить её?</span>
+        <form th:method="PATCH" th:action="@{/tasks/{id}/assign(id=${task.getId()})}">
+            <label for="person">Все кто может взять задачу:</label>
+            <select th:object="${person}" th:field="*{id}" id="person">
+                <option th:each="person: ${people}" th:value="${person.getId()}"
+                        th:text="${person.getUsername()}"></option>
+            </select>
+            <input type="submit" value="дать"/>
+        </form>
+    </div>
+    <br/>
+    <a th:href="@{/tasks/{id}/edit(id=${task.getId()})}"><button>Изменить</button></a>
+    <br/>
+    <form th:method="DELETE" th:action="@{/tasks/{id}(id=${task.getId()})}">
+        <input type="submit" value="Готово"/>
+    </form>
+    <br/>
+    <form th:method="DELETE" th:action="@{/tasks/{id}(id=${task.getId()})}">
+        <input type="submit" value="Удалить"/>
+    </form>
+    <form th:action="@{/tasks/}" th:method="GET">
+        <button type="submit">Назад</button>
     </form>
 </div>
-<div th:if="${people}">
-    <span>Эта задача свободна. Кому назначить её?</span>
-    <form th:method="PATCH" th:action="@{/tasks/{id}/assign(id=${task.getId()})}">
-        <label for="person">Все кто может взять задачу:</label>
-        <select th:object="${person}" th:field="*{id}" id="person">
-            <option th:each="person: ${people}" th:value="${person.getId()}"
-                    th:text="${person.getUsername()}"></option>
-        </select>
-        <input type="submit" value="дать"/>
-    </form>
-</div>
-<br/>
-<a th:href="@{/tasks/{id}/edit(id=${task.getId()})}"><button>Изменить</button></a>
-<br/>
-<br/>
-<form th:method="DELETE" th:action="@{/tasks/{id}(id=${task.getId()})}">
-    <input type="submit" value="Готово"/>
-</form>
-<br/>
-<form th:method="DELETE" th:action="@{/tasks/{id}(id=${task.getId()})}">
-    <input type="submit" value="Удалить"/>
-</form>
-<form th:action="@{/tasks/}" th:method="GET">
-    <button type="submit">Назад</button>
-</form>
 </body>
 </html>
