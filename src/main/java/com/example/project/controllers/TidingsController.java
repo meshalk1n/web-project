@@ -20,24 +20,33 @@ public class TidingsController {
         this.newsService = newsService;
     }
 
-    @GetMapping("main/main/")
-    public String showAllBooks(Model model) {
-        model.addAttribute("tidings", newsService.findAll());
-        return "main/main";
-    }
-
-    @GetMapping("tidings/new")
+    @GetMapping("tidings/tidings")
     public String showFormForNewBook(@ModelAttribute("tidings") Tidings tidings) {
-        return "tidings/new";
+        return "tidings/tidings";
     }
 
-    @PostMapping("/main/")
-    public String processSaveNewBook(@ModelAttribute("tidings") @Valid Tidings tidings,
-                                     BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            return "main/main";
-        }
-        newsService.save(tidings);
-        return "redirect:main/";
+
+    @GetMapping("tidings/{id}")
+    public String processFetchPersonById(@PathVariable("id") int id, Model model) {
+        model.addAttribute("tiding", newsService.findOne(id));
+        return "tidings/id";
+    }
+
+    @GetMapping("tidings/{id}/edit")
+    public String showFormEdit(Model model, @PathVariable("id") int id) {
+        model.addAttribute("tiding", newsService.findOne(id));
+        return "tidings/edit";
+    }
+
+    @PatchMapping("tidings/{id}")
+    public String processEditForm(@PathVariable("id") int id, @ModelAttribute("tiding") @Valid Tidings tidings) {
+        newsService.update(id, tidings);
+        return "redirect:/main/";
+    }
+
+    @DeleteMapping("tidings/{id}")
+    public String processDeletePerson(@PathVariable("id") int id) {
+        newsService.delete(id);
+        return "redirect:/main/";
     }
 }

@@ -24,17 +24,14 @@
 </div>
 <div class="content">
     <!-- Здесь будет содержимое страницы -->
-</div>
-<div class="tidings" style="position: absolute; right: 50%; transform: translateX(50%); top: 0;">
     <h2>Новости</h2>
+
     <div th:each="tiding : ${tidings}">
-        <a th:href="@{/tidings/{id}(id=${tiding.getName()})}"
-           th:text="${tiding.getName() + ', ' + tiding.getCore()}">tidings</a>
+        <a th:href="@{/tidings/{id}(id=${tiding.getId()})}"
+           th:text="${tiding.getName()}">tidings</a>
     </div>
     <!-- Форма для оставления комментариев -->
-    <div class="comment-box">
-        <a href="/tidings/new">Создать новость</a>
-    </div>
+    <a href="/tidings/tidings">Создать новость</a>
 </div>
 </body>
 </html>

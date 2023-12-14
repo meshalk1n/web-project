@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>id</title>
+</head>
+<body>
+<h4> id: </h4>
+<p th:text="${tiding.getId()}">VALUE</p>
+<br/>
+<br/>
+<h4> ваше имя: </h4>
+<p th:text="${tiding.getName()}">VALUE</p>
+<br/>
+<h4> ваш возраст: </h4>
+<p th:text="${tiding.getCore()}">VALUE</p>
+<br/>
+<br/>
+<a th:href="@{/tidings/{id}/edit(id=${tiding.getId()})}"><button>Изменить</button></a>
+<br/>
+<br/>
+<form th:method="DELETE" th:action="@{/tidings/{id}(id=${tiding.getId()})}">
+  <input type="submit" value="Удалить"/>
+</form>
+</body>
+</html>
