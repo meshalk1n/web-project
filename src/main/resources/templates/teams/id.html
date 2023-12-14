@@ -35,5 +35,8 @@
 <form th:method="DELETE" th:action="@{/teams/{id}(id=${person.getId()})}">
   <input type="submit" value="Удалить"/>
 </form>
+<form th:action="@{/teams/}" th:method="GET">
+  <button type="submit">Назад</button>
+</form>
 </body>
 </html>

@@ -19,6 +19,9 @@
     <label for="age">Роль:</label><br>
     <input type="text" id="role" name="role" th:value="${person.role}" readonly><br>
   </form>
+  <form th:action="@{/main/}" th:method="GET">
+    <button type="submit">Назад</button>
+  </form>
 </div>
 </body>
 </html>

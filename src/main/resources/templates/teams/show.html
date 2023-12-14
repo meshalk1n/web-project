@@ -14,7 +14,11 @@
 <br/>
 <hr/>
 
-<a href="/teams/new">Create new person</a>
+<a href="/teams/new">Добавить пользователя</a>
+
+<form th:action="@{/main/}" th:method="GET">
+  <button type="submit">Назад</button>
+</form>
 
 </body>
 </html>

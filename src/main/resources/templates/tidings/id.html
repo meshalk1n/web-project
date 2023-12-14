@@ -22,5 +22,8 @@
 <form th:method="DELETE" th:action="@{/tidings/{id}(id=${tiding.getId()})}">
   <input type="submit" value="Удалить"/>
 </form>
+<form th:action="@{/main/}" th:method="GET">
+  <button type="submit">Назад</button>
+</form>
 </body>
 </html>

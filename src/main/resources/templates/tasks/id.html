@@ -46,5 +46,8 @@
 <form th:method="DELETE" th:action="@{/tasks/{id}(id=${task.getId()})}">
     <input type="submit" value="Удалить"/>
 </form>
+<form th:action="@{/tasks/}" th:method="GET">
+    <button type="submit">Назад</button>
+</form>
 </body>
 </html>
