@@ -19,7 +19,7 @@
 <p th:text="${task.getYear()}">VALUE </p>
 <br/>
 <div th:if="${owner}">
-    <span>Книга сейчас у: </span> <span th:text="${owner.getUsername()}">Person Name</span>
+    <span>Задача сейчас у: </span> <span th:text="${owner.getUsername()}">Person Name</span>
     <form th:method="PATCH" th:action="@{/tasks/{id}/release(id=${task.getId()})}">
         <input type="submit" value="Освободить задачу">
     </form>
