@@ -11,13 +11,13 @@
     <input type="text" th:field="*{title}" id="title"/>
     <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">error</div>
     <br/>
-    <label for="author">Введите описание задачи: </label>
-    <input type="text" th:field="*{author}" id="author"/>
-    <div style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">error</div>
+    <label for="description">Введите описание задачи: </label>
+    <input type="text" th:field="*{description}" id="description"/>
+    <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">error</div>
     <br/>
-    <label for="year">Введите сроки задачи: </label>
-    <input type="text" th:field="*{year}" id="year"/>
-    <div style="color: red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">error</div>
+    <label for="data">Введите сроки задачи: </label>
+    <input type="text" th:field="*{data}" id="data"/>
+    <div style="color: red" th:if="${#fields.hasErrors('data')}" th:errors="*{data}">error</div>
     <br/>
     <input type="submit" value="Добавить"/>
 </form>

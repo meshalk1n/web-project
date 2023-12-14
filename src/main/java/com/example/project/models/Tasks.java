@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Tasks")
@@ -21,22 +22,21 @@ public class Tasks {
 
     @NotEmpty(message = "это поле не должно быть пустым")
     @Size(min = 2, max = 30, message = "это поле должно иметь минимум 2 и максимум 30 символов")
-    @Column(name = "author")
-    private String author;
+    @Column(name = "description")
+    private String description;
 
-    @Min(value = 1, message = "это поле должно быть больше 0")
-    @Column(name = "year")
-    private int year;
+    @Column(name = "data")
+    private String data;
 
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person owner;
     public Tasks(){}
 
-    public Tasks(String title, String author, int year) {
+    public Tasks(String title, String description, String data) {
         this.title = title;
-        this.author = author;
-        this.year = year;
+        this.description = description;
+        this.data = data;
     }
 
     public int getId() {
@@ -55,20 +55,20 @@ public class Tasks {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setDescription(String author) {
+        this.description = author;
     }
 
-    public int getYear() {
-        return year;
+    public String getData() {
+        return data;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setData(String year) {
+        this.data = year;
     }
 
     public Person getOwner() {
@@ -84,8 +84,8 @@ public class Tasks {
         return "Tasks{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", year=" + year +
+                ", author='" + description + '\'' +
+                ", year=" + data +
                 '}';
     }
 }

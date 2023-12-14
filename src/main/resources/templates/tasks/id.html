@@ -13,10 +13,10 @@
 <p th:text="${task.getTitle()}">VALUE</p>
 <br/>
 <h4> описание задачи: </h4>
-<p th:text="${task.getAuthor()}">VALUE</p>
+<p th:text="${task.getDescription()}">VALUE</p>
 <br/>
 <h4> сроки задачи: </h4>
-<p th:text="${task.getYear()}">VALUE </p>
+<p th:text="${task.getData()}">VALUE </p>
 <br/>
 <div th:if="${owner}">
     <span>Задача сейчас у: </span> <span th:text="${owner.getUsername()}">Person Name</span>

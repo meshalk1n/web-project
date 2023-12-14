@@ -14,7 +14,7 @@
   <hr/>
   <b>Задачи:</b>
   <table th:each="tasks : ${tasks}">
-    <tr th:text="${tasks.getTitle() + ' ,' + tasks.getAuthor() + ' ,' + tasks.getYear()}">tasks</tr>
+    <tr th:text="${tasks.getTitle() + ' ,' + tasks.getDescription() + ' ,' + tasks.getData()}">tasks</tr>
   </table>
   <hr/>
 </div>
